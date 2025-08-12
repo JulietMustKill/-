@@ -1,0 +1,8 @@
+CREATE OR REPLACE VIEW polnsem AS
+select "дети"."ID_ребенка", "родители"."фио" from "дети"
+JOIN "родители" ON "дети"."ID_ребенка" = "родители"."ID"
+where "дети"."ID_ребенка" IN(
+	SELECT "ID_ребенка" FROM "дети" 
+	GROUP BY "ID_ребенка"
+	HAVING COUNT(*) != 2);
+SELECT * FROM public.polnsem;
