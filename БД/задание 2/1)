@@ -1,0 +1,12 @@
+1) На основании приведённых данных определите ID родного брата Седых В.А.
+CREATE OR REPLACE VIEW brat AS
+SELECT DISTINCT дети."ID_ребенка"
+FROM "дети"
+JOIN "родители" ON "дети"."ID_ребенка" = "родители"."ID"
+WHERE "дети"."ID_родителя" IN (
+    SELECT "ID_родителя"
+    FROM "дети"
+    WHERE "ID_ребенка" = '2911') 
+AND дети."ID_ребенка" != '2911'
+AND "родители"."пол" = 'м';
+SELECT * FROM public.brat
