@@ -1,0 +1,23 @@
+using System;
+class Zadanie5
+{
+    static void Main()
+    {
+        int b = 0;
+        while (true)
+        {
+            var key = Console.ReadKey();
+            char input = key.KeyChar;
+            if (input == ' ')
+            {
+                Console.WriteLine("\n" + b);
+                return;
+            }
+            else
+            {
+                b += int.Parse(input.ToString());
+            };
+           
+        }
+    }
+    };
