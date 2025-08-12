@@ -1,0 +1,15 @@
+
+2) Сколько братьев у Саенко М.А.
+CREATE OR REPLACE VIEW bratSaenko AS
+SELECT DISTINCT дети."ID_ребенка", "родители"."фио"
+FROM "дети"
+JOIN "родители" ON "дети"."ID_ребенка" = "родители"."ID"
+WHERE "дети"."ID_родителя" IN (
+    SELECT "ID_родителя"
+    FROM "дети"
+    WHERE "ID_ребенка" = '1588'
+) 
+AND дети."ID_ребенка" != '1588'
+AND "родители"."пол" = 'м';
+SELECT * FROM public.bratSaenko;
+SELECT COUNT(*) AS "Кол-во братьев" FROM public.bratSaenko;
