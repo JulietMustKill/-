@@ -1,0 +1,20 @@
+using System;
+class Zadanie2
+{
+    static void Main()
+    {
+        string input = Console.ReadLine();
+        int b = int.Parse(input[0].ToString());
+        for (int i = 1; i < input.Length; i++)
+        {
+            int nau = int.Parse(input[i].ToString());
+            if (nau > b)
+            {
+                b = nau;
+            }
+        }
+        Console.WriteLine(b);
+        Console.ReadKey();
+    }
+};
+//b-символ в котором хранится нынешнее наибольшее число, nau - следующее число для сравнения
